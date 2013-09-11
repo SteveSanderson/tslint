@@ -12,19 +12,19 @@ module Lint.Rules {
     }
 
     class VarNameUniquenessWalker extends Lint.RuleWalker {
-        private _scopeStack: ScopeInfo[] = [];
+        private scopeStack: ScopeInfo[] = [];
 
         public visitNode(node: TypeScript.SyntaxNode): void {
             var isNewScope = this.isScopeBoundary(node);
 
             if (isNewScope) {
-                this._scopeStack.push(new ScopeInfo());
+                this.scopeStack.push(new ScopeInfo());
             }
             
             super.visitNode(node);
 
             if (isNewScope) {
-                this._scopeStack.pop();
+                this.scopeStack.pop();
             }
         }
 
@@ -32,7 +32,7 @@ module Lint.Rules {
             var identifier = node.identifier,
                 variableName = identifier.text(),
                 position = this.position() + identifier.leadingTriviaWidth(),
-                currentScope = this._scopeStack[this._scopeStack.length - 1];
+                currentScope = this.scopeStack[this.scopeStack.length - 1];
 
             if (currentScope) {
                 if (currentScope.varNames.indexOf(variableName) >= 0) {
