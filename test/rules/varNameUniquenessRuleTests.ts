@@ -7,8 +7,8 @@ describe("<varnameuniqueness>", () => {
 
         var createFailure = Lint.Test.createFailuresOnFile(fileName, failureString);
         var expectedFailures = [
-            createFailure([9, 13], [9, 23]),
-            createFailure([20, 9], [20, 19])
+            createFailure([18, 13], [18, 23]),
+            createFailure([33, 9], [33, 19])
         ];
 
         var actualFailures = Lint.Test.applyRuleOnFile(fileName, "varnameuniqueness");
