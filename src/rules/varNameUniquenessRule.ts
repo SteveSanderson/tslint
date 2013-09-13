@@ -59,7 +59,8 @@ module Lint.Rules {
                 || node instanceof TypeScript.ParenthesizedArrowFunctionExpressionSyntax
                 || node instanceof TypeScript.ModuleDeclarationSyntax
                 || node instanceof TypeScript.ConstructorDeclarationSyntax
-                || node instanceof TypeScript.FunctionExpressionSyntax;
+                || node instanceof TypeScript.FunctionExpressionSyntax
+                || node instanceof TypeScript.CatchClauseSyntax;
         }
     }
 

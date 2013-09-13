@@ -31,4 +31,10 @@ function test() {
         };
 
     var duplicated = 1;
+
+    try {
+        notDuplicated++;
+    } catch {
+        var notDuplicated; // Catch blocks have new scope
+    }
 }
